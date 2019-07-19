@@ -50,13 +50,26 @@ public class PlayerController : MonoBehaviour
    */
   private void Update()
   {
-    if(Input.GetKeyDown(KeyCode.UpArrow))
+    if(canJump == true)
     {
-      if(canJump == true)
-      {
-        rigidbody2d.AddForce(new Vector2(0, 500));
-        canJump = false;
-      }
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            rigidbody2d.AddForce(new Vector2(0, 500));
+            canJump = false;
+        }
+        else if(Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidbody2d.AddForce(new Vector2(0, 600));
+            canJump = false;
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            transform.localScale=new Vector3(1f,0.6f,0.5f);
+        }
+        else if(Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            transform.localScale=new Vector3(1.0f,1.0f,1.0f);   
+        }
     }
   }
 
