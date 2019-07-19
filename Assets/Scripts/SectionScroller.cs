@@ -44,7 +44,7 @@ public class SectionScroller : MonoBehaviour
                 obj = GameObject.Instantiate(obstacles[0],position,new Quaternion(0, 0, 0, 0));
             }
             else if(height==1){
-                Vector3 position=transform.position+new Vector3(l-100,baseHeight+0.5f,0);
+                Vector3 position=transform.position+new Vector3(l-100,baseHeight+0.4f,0);
                 obj = GameObject.Instantiate(obstacles[1],position,new Quaternion(0, 0, 0, 0)); 
                 
             }
