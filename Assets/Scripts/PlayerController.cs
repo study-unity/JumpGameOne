@@ -54,13 +54,11 @@ public class PlayerController : MonoBehaviour {
                 canJump = false;
             } else if (Input.GetKeyDown (KeyCode.DownArrow)) {
                 transform.localScale = new Vector3 (1f, 0.6f, 0.5f);
-                canJump = false;
                 squat = true;
             }
         }
-        if (Input.GetKeyUp (KeyCode.DownArrow)) {
+        if (Input.GetKeyUp(KeyCode.DownArrow)) {
             transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
-            canJump = true;
             squat = false;
         }
     }
@@ -70,7 +68,8 @@ public class PlayerController : MonoBehaviour {
      * the player can trigger another jump.
      */
     private void OnCollisionEnter2D (Collision2D other) {
-        if (!squat)
+        Debug.Log(other.gameObject.CompareTag("block"));
+        if (!squat&&other.gameObject.CompareTag("block"))
             canJump = true;
     }
 
