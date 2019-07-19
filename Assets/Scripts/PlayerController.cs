@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
     private int health;
     private bool canJump;
+    private bool squat=false;
 
     /*
      * Apply initial health and also store the Rigidbody2D reference for
@@ -54,11 +55,13 @@ public class PlayerController : MonoBehaviour {
             } else if (Input.GetKeyDown (KeyCode.DownArrow)) {
                 transform.localScale = new Vector3 (1f, 0.6f, 0.5f);
                 canJump = false;
+                squat = true;
             }
         }
         if (Input.GetKeyUp (KeyCode.DownArrow)) {
             transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
             canJump = true;
+            squat = false;
         }
     }
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour {
      * the player can trigger another jump.
      */
     private void OnCollisionEnter2D (Collision2D other) {
-        canJump = true;
+        if (!squat)
+            canJump = true;
     }
 }
