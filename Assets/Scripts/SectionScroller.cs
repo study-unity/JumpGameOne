@@ -57,7 +57,7 @@ public class SectionScroller : MonoBehaviour {
                 obj = GameObject.Instantiate (obstacles[2], position, new Quaternion (0, 0, 0, 0));
             }
             obj.transform.parent = transform;
-            if (level == 1) {
+            if (level == 2) {
                 GetStuts(l+2,l+distance);
             }
             l += Random.Range (distance, distance + 10);
