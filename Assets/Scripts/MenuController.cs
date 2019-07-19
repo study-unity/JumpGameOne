@@ -20,4 +20,9 @@ public class MenuController : MonoBehaviour
   {
     Application.LoadLevel("Menu");
   }
+
+  public void OnQuitClicked()
+  {
+    Application.Quit();
+  }
 }
