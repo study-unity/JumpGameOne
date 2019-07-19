@@ -8,6 +8,8 @@ public class SectionScroller : MonoBehaviour
 {
     public GameObject[] stuts;
     public GameObject[] obstacles;
+    public GameObject block;
+    public GameObject flag;
     public int level;
 
   /*
@@ -19,6 +21,26 @@ public class SectionScroller : MonoBehaviour
     transform.Translate(new Vector2(-10, 0) * Time.deltaTime);
   }
   private void Awake()
+  {
+      GetGround();
+      GetObstacles();
+      GetFlag();
+  }
+  private void Start()
+  {
+      
+  }
+
+  private void GetGround()
+  {
+      for(int i=0;i<300;i++)
+      {
+            GameObject obj = GameObject.Instantiate(block,transform.position+new Vector3(0.8f*i-100,0,0),new Quaternion(0, 0, 0, 0));
+            obj.transform.parent=transform;
+      }
+  }
+
+  private void GetObstacles()
   {
       int distance;
       switch(level)
@@ -56,8 +78,9 @@ public class SectionScroller : MonoBehaviour
             l+=Random.Range(distance,distance+10);
         }while(l<=200);
   }
-  private void Start()
-  {
-      
+
+  private void GetFlag(){
+      GameObject obj = GameObject.Instantiate(flag,transform.position+new Vector3(220,2,0),new Quaternion(0, 0, 0, 0));
+      obj.transform.parent=transform;
   }
 }
