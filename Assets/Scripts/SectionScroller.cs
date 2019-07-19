@@ -9,9 +9,7 @@ public class SectionScroller : MonoBehaviour {
     public GameObject[] obstacles;
     public GameObject block;
     public GameObject flag;
-    private int level = 0;
 
-    public int Level { get => level; set => level = value; }
 
     /*
      * Use the Transform component attached to the section game object and
@@ -37,18 +35,7 @@ public class SectionScroller : MonoBehaviour {
     }
 
     private void GetObstacles () {
-        int distance;
-        switch (Level) {
-            case 1:
-                distance = 20;
-                break;
-            case 2:
-                distance = 15;
-                break;
-            default:
-                distance = 15;
-                break;
-        }
+        int distance=15;
         int l = Random.Range (25, 30);
         float baseHeight = 1.24f;
         float obsHeight = 1.4f;
