@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     private int health;
     private bool canJump;
     private bool squat=false;
-
+    public SectionScroller section;
     /*
      * Apply initial health and also store the Rigidbody2D reference for
      * future because GetComponent<T> is relatively expensive.
@@ -72,5 +72,14 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionEnter2D (Collision2D other) {
         if (!squat)
             canJump = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name.Equals("success(Clone)"))
+        {
+            section.Level++;
+            Application.LoadLevel("PassGame");
+        }
     }
 }

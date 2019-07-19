@@ -10,13 +10,15 @@ public class SectionScroller : MonoBehaviour
     public GameObject[] obstacles;
     public GameObject block;
     public GameObject flag;
-    public int level;
+    private int level=0;
 
-  /*
-   * Use the Transform component attached to the section game object and
-   * translate it based on delta time.
-   */
-  private void Update()
+    public int Level { get => level; set => level = value; }
+
+    /*
+     * Use the Transform component attached to the section game object and
+     * translate it based on delta time.
+     */
+    private void Update()
   {
     transform.Translate(new Vector2(-10, 0) * Time.deltaTime);
   }
@@ -43,7 +45,7 @@ public class SectionScroller : MonoBehaviour
   private void GetObstacles()
   {
       int distance;
-      switch(level)
+      switch(Level)
       {
         case 1:
             distance=20;
@@ -83,4 +85,5 @@ public class SectionScroller : MonoBehaviour
       GameObject obj = GameObject.Instantiate(flag,transform.position+new Vector3(120,2,0),new Quaternion(0, 0, 0, 0));
       obj.transform.parent=transform;
   }
+
 }
