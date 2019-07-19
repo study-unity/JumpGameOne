@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour {
      * the player can trigger another jump.
      */
     private void OnCollisionEnter2D (Collision2D other) {
-        Debug.Log(other.gameObject.CompareTag("block"));
         if (!squat&&other.gameObject.CompareTag("block"))
             canJump = true;
     }
