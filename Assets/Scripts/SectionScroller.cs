@@ -65,7 +65,7 @@ public class SectionScroller : MonoBehaviour {
     }
 
     private void GetFlag () {
-        GameObject obj = GameObject.Instantiate (flag, transform.position + new Vector3 (length-30, 2, 0), new Quaternion (0, 0, 0, 0));
+        GameObject obj = GameObject.Instantiate (flag, transform.position + new Vector3 (length+20, 2, 0), new Quaternion (0, 0, 0, 0));
         obj.transform.parent = transform;
     }
 
