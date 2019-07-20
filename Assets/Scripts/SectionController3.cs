@@ -30,7 +30,7 @@ public class SectionController3 : MonoBehaviour {
             playerpass.setIndex (i);
             playerpass.setSection (gameObject);
             if (i == nextObstacle) {
-                int r = Random.Range (0, 5);
+                int r = Random.Range (0, 4);
                 if (r == 0) {
                     SetStut (p);
                 } else

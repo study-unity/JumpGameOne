@@ -26,7 +26,7 @@ public class PlayerPassed : MonoBehaviour {
         next.setSection (section);
         SectionController3 sectionController = section.GetComponent<SectionController3> ();
         if (nextBlock == sectionController.nextObstacle) {
-            int r = Random.Range (0, 5);
+            int r = Random.Range (0, 4);
             if (r==0) {
                 sectionController.SetStut (p);
             } else

@@ -6,6 +6,7 @@ public class Move : MonoBehaviour {
     // Start is called before the first frame update
     public int level;
     private float speed;
+    public float GetSpeed() => speed;
 
     void Start () {
         switch (level) {

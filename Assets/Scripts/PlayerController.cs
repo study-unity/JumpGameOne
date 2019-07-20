@@ -11,14 +11,18 @@ public class PlayerController : MonoBehaviour {
     private bool canJump;
     bool protect;
     float EndTime;
+    Transform childShield;
+
     /*
-     * Apply initial health and also store the Rigidbody2D reference for
-     * future because GetComponent<T> is relatively expensive.
-     */
+* Apply initial health and also store the Rigidbody2D reference for
+* future because GetComponent<T> is relatively expensive.
+*/
     private void Start () {
         health = 6;
         rigidbody2d = GetComponent<Rigidbody2D> ();
         protect = false;
+        childShield = transform.GetChild(1);
+        childShield.gameObject.SetActive(false);
     }
 
     /*
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour {
         }
         else{
             protect=false;
+            childShield.gameObject.SetActive(false);
         }
 
     }
@@ -42,9 +47,7 @@ public class PlayerController : MonoBehaviour {
     /*
      * Accessor for health variable, used by he HUD to display health.
      */
-    public int GetHealth () {
-        return health;
-    }
+    public int GetHealth() => health;
 
     /*
      * Poll keyboard for when the up arrow is pressed. If the player can jump
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateJump () {
-        if (canJump == true) {
+        if (canJump == true&&transform.position[1]<-3) {
             if (Input.GetKeyDown (KeyCode.UpArrow)) {
                 rigidbody2d.AddForce (new Vector2 (0, 500));
                 canJump = false;
@@ -105,13 +108,15 @@ public class PlayerController : MonoBehaviour {
 
     private void ProtectPlayer () {
         protect = true;
-        EndTime = (float)(DateTime.UtcNow.Subtract (new DateTime (1970, 1, 1)).TotalMilliseconds) / 1000.0f + 5;
+        childShield.gameObject.SetActive(true);
+        EndTime = Time.time + 7;
     }
 
     private void UpdateProtect () {
-        float currentTime = (float)(DateTime.UtcNow.Subtract (new DateTime (1970, 1, 1)).TotalMilliseconds) / 1000.0f;
+        float currentTime = Time.time;
         if (currentTime > EndTime) {
             protect = false;
+            childShield.gameObject.SetActive(false);
         }
     }
 }
