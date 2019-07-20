@@ -79,4 +79,5 @@ public class SectionScroller : MonoBehaviour {
             obj.transform.parent = transform;
         }
     }
+
 }
