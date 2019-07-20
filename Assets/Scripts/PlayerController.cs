@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour {
     private void UpdateJump () {
         if (canJump == true) {
             if (Input.GetKeyDown (KeyCode.UpArrow)) {
-                Debug.Log ("UP");
                 rigidbody2d.AddForce (new Vector2 (0, 500));
                 canJump = false;
             } else if (Input.GetKeyDown (KeyCode.Space)) {
@@ -93,9 +92,9 @@ public class PlayerController : MonoBehaviour {
             else if(sceneName.Equals("Game2"))
                 SceneManager.LoadScene("Game3");
         } else if (collision.gameObject.CompareTag ("drug")) {
+            Destroy (collision.gameObject);
             if (health < 6) {
                 health += 1;
-                Destroy (collision.gameObject);
             }
         } else if (collision.gameObject.CompareTag ("shield")) {
             Destroy (collision.gameObject);
