@@ -22,12 +22,16 @@ public class PlayerPassed : MonoBehaviour {
         Vector3 p = transform.position + new Vector3 (width * 50, 0, 0);
         GameObject obj = GameObject.Instantiate (block, p, new Quaternion (0, 0, 0, 0));
         PlayerPassed next = obj.GetComponent<PlayerPassed> ();
-        next.setIndex(nextBlock);
-        next.setSection(section);
+        next.setIndex (nextBlock);
+        next.setSection (section);
         SectionController3 sectionController = section.GetComponent<SectionController3> ();
         if (nextBlock == sectionController.nextObstacle) {
-            sectionController.getNext();
-            sectionController.SetObstacle(p);
+            int r = Random.Range (0, 5);
+            if (r==0) {
+                sectionController.SetStut (p);
+            } else
+                sectionController.SetObstacle (p);
+            sectionController.getNext ();
         }
 
     }

@@ -70,7 +70,7 @@ public class SectionScroller : MonoBehaviour {
     }
 
     private void GetStuts (int start, int end) {
-        int probable = Random.Range(0,3);
+        int probable = Random.Range(0,4);
         if(probable==0){
             int i = Random.Range(0,2);
             int p=Random.Range(0,end-start);
