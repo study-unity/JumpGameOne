@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System;
-
+using UnityEngine.SceneManagement;
 /*
  * Behaviour to handle keyboard input and also store the player's
  * current health.
@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
     private int health;
     private bool canJump;
-    public SectionScroller section;
     bool protect;
     float EndTime;
     /*
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour {
             health -= 1;
 
             if (health < 1) {
-                Application.LoadLevel ("EndGame");
+                SceneManager.LoadScene("EndGame");
             }
         }
         else{
@@ -88,7 +87,11 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D (Collider2D collision) {
         if (collision.gameObject.name.Equals ("success(Clone)")) {
-            Application.LoadLevel ("PassGame");
+            string sceneName = SceneManager.GetActiveScene().name;
+            if(sceneName.Equals("Game"))
+                SceneManager.LoadScene("Game2");
+            else if(sceneName.Equals("Game2"))
+                SceneManager.LoadScene("Game3");
         } else if (collision.gameObject.CompareTag ("drug")) {
             if (health < 6) {
                 health += 1;
