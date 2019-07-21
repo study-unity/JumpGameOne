@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
     private int health;
     private bool canJump;
+    private int protectCount;
+    private int clockCount;
+    private bool clock;
     bool protect;
     float EndTime;
     Transform childShield;
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     private void Start () {
         health = 6;
         rigidbody2d = GetComponent<Rigidbody2D> ();
+        protectCount=0;
         protect = false;
         childShield = transform.GetChild(1);
         childShield.gameObject.SetActive(false);
@@ -77,6 +81,18 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyUp (KeyCode.DownArrow)) {
             transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
         }
+        if(protectCount>0){
+            if(Input.GetKeyDown(KeyCode.A)){
+                protectCount--;
+                ProtectPlayer();
+            }
+        }
+        if(clockCount>0){
+            if(Input.GetKeyDown(KeyCode.S)){
+                clockCount--;
+                transform.parent.gameObject.GetComponent<Move>().SlowDown();
+            }
+        }
     }
     /*
      * If the player has collided with the ground, set the canJump flag so that
@@ -101,8 +117,14 @@ public class PlayerController : MonoBehaviour {
             }
         } else if (collision.gameObject.CompareTag ("shield")) {
             Destroy (collision.gameObject);
-            ProtectPlayer ();
-
+            if(protectCount<3){
+                protectCount++;
+            }
+        } else if (collision.gameObject.CompareTag ("clock")) {
+            Destroy (collision.gameObject);
+            if(clockCount<3){
+                clockCount++;
+            }
         }
     }
 
@@ -118,5 +140,9 @@ public class PlayerController : MonoBehaviour {
             protect = false;
             childShield.gameObject.SetActive(false);
         }
+    }
+
+    public int GetShieldNum(){
+        return protectCount;
     }
 }

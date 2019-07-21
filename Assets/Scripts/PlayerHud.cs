@@ -16,7 +16,7 @@ public class PlayerHud : MonoBehaviour
   private void Start()
   {
     playerController = GetComponent<PlayerController>();
-    move = GetComponent<Move>();
+    move = transform.parent.gameObject.GetComponent<Move>();
     heart = Resources.Load<Texture2D>("heart");
     halfHeart = Resources.Load<Texture2D>("halfHeart");
     for(int i = 0;i<10;i++)

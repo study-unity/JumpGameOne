@@ -66,7 +66,7 @@ public class SectionController3 : MonoBehaviour {
 
     public void SetStut (Vector3 p) {
         float height;
-        int i = Random.Range (0, 2);
+        int i = Random.Range (0, 3);
         int j = Random.Range (0, 3);
         switch (j) {
             case 0:
