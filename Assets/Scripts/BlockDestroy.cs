@@ -16,6 +16,9 @@ public class BlockDestroy : MonoBehaviour
         
     }
 
+    /*
+    Destroy the ground beyond the camera's field of view
+     */
     void  OnBecameInvisible()
     {
         Destroy(gameObject);

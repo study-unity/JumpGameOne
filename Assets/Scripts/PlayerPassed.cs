@@ -17,6 +17,9 @@ public class PlayerPassed : MonoBehaviour {
 
     }
 
+    /*
+     * 在每个砖块上添加一个触发器，当player经过时，则会触发，生成新的砖块，新的砖块的位置为被触发的砖块位置加50
+     */
     private void OnTriggerEnter2D (Collider2D other) {
         int nextBlock = index + 50;
         Vector3 p = transform.position + new Vector3 (width * 50, 0, 0);
@@ -25,6 +28,7 @@ public class PlayerPassed : MonoBehaviour {
         next.setIndex (nextBlock);
         next.setSection (section);
         SectionController3 sectionController = section.GetComponent<SectionController3> ();
+        //当新生成的砖块位置等于section中下一关障碍的位置时，在新的砖块上放置障碍或道具
         if (nextBlock == sectionController.nextObstacle) {
             int r = Random.Range (0, 4);
             if (r==0) {
