@@ -9,7 +9,7 @@ public class PlayerPassed : MonoBehaviour {
     float width = 0.9f;
     int index;
     void Start () {
-
+        
     }
 
     // Update is called once per frame

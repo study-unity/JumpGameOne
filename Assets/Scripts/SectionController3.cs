@@ -37,7 +37,6 @@ public class SectionController3 : MonoBehaviour {
                     SetObstacle (p);
                 getNext ();
             }
-
         }
     }
 

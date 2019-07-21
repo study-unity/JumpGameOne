@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour {
     Transform childShield;
 
     /*
-* Apply initial health and also store the Rigidbody2D reference for
-* future because GetComponent<T> is relatively expensive.
-*/
+    * Apply initial health and also store the Rigidbody2D reference for
+    * future because GetComponent<T> is relatively expensive.
+    */
     private void Start () {
         health = 6;
         rigidbody2d = GetComponent<Rigidbody2D> ();
