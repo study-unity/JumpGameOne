@@ -22,6 +22,6 @@ public class EndShow:MonoBehaviour{
         // 画分数
 		string playerScore = score.GetComponent<ScoreController>().Score.ToString();
 		for(int i = playerScore.Length-1; i>=0 ;i--)
-			GUI.DrawTexture(new Rect(1300-70*(playerScore.Length-i-1),370,100,100),numbers[int.Parse(playerScore[i].ToString())]);
+			GUI.DrawTexture(new Rect(1300-100*(playerScore.Length-i-1),370,100,100),numbers[int.Parse(playerScore[i].ToString())]);
     }
 }

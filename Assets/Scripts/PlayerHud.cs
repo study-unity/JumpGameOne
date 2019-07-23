@@ -78,7 +78,7 @@ public class PlayerHud : MonoBehaviour
 		string score = ((int)(keepTime*move.GetSpeed()/30)).ToString();
 		Score = int.Parse(score);
 		for(int i = score.Length-1; i>=0 ;i--)
-			GUI.DrawTexture(new Rect(1500-70*(score.Length-i-1),10,80,80),numbers[int.Parse(score[i].ToString())]);
+			GUI.DrawTexture(new Rect(1500-80*(score.Length-i-1),10,80,80),numbers[int.Parse(score[i].ToString())]);
 
 		// 画盾牌
 		switch(playerController.GetShieldNum())
