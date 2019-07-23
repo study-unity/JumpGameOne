@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 /*
  * Behaviour to handle keyboard input and also store the player's
@@ -26,7 +25,7 @@ public class PlayerController : MonoBehaviour {
     float EndTime;
 
     Transform childShield;
-
+    public GameObject score;
     /*
      * Apply initial health and also store the Rigidbody2D reference for
      * future because GetComponent<T> is relatively expensive.
@@ -50,6 +49,7 @@ public class PlayerController : MonoBehaviour {
             health -= 1;
 
             if (health < 1) {
+                Instantiate(score).GetComponent<ScoreController>().Score = GetComponent<PlayerHud>().Score;
                 SceneManager.LoadScene ("EndGame");
             }
         }
@@ -154,12 +154,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     /*
-     * 使用盾牌保护player，时长为7秒
+     * 使用盾牌保护player，时长为3秒
      */
     private void ProtectPlayer () {
         protect = true;
         childShield.gameObject.SetActive (true);
-        EndTime = Time.time + 7;
+        EndTime = Time.time + 3;
     }
 
     /*
