@@ -11,7 +11,7 @@ public class SectionScroller : MonoBehaviour {
     public GameObject flag;
     public int level;
     int distance = 20;
-    int length=400;
+    int length=600;
 
     /*
      * Use the Transform component attached to the section game object and

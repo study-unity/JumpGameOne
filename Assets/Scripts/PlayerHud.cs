@@ -78,7 +78,7 @@ public class PlayerHud : MonoBehaviour
 		string score = ((int)(keepTime*move.GetSpeed()/30)).ToString();
 		Score = int.Parse(score);
 		for(int i = score.Length-1; i>=0 ;i--)
-			GUI.DrawTexture(new Rect(1500-80*(score.Length-i-1),10,80,80),numbers[int.Parse(score[i].ToString())]);
+			GUI.DrawTexture(new Rect(1190-80*(score.Length-i-1),10,80,80),numbers[int.Parse(score[i].ToString())]);
 
 		// 画盾牌
 		switch(playerController.GetShieldNum())
@@ -129,15 +129,15 @@ public class PlayerHud : MonoBehaviour
 				infoStyle.normal.textColor = new Color(0,1,1,1);
 				infoStyle.font = gameSkin.font;
 				infoStyle.fontStyle = FontStyle.Bold;
-				GUI.Label(new Rect(590,120,30,30),"Chapter 1:",infoStyle);
+				GUI.Label(new Rect(460,120,30,30),"Chapter 1:",infoStyle);
 				infoStyle.fontStyle = FontStyle.BoldAndItalic;
-				GUI.Label(new Rect(830,120,30,30),"Library",infoStyle);
+				GUI.Label(new Rect(700,120,30,30),"Library",infoStyle);
 				infoStyle.fontSize = 30;
 				infoStyle.fontStyle = FontStyle.Normal;
-				GUI.Label(new Rect(450,180,30,30),"This section is a prologue, you can know this game basically.",infoStyle);
+				GUI.Label(new Rect(320,180,30,30),"This section is a prologue, you can know this game basically.",infoStyle);
 				infoStyle.fontSize = 35;
 				infoStyle.fontStyle = FontStyle.Italic;
-				GUI.Label(new Rect(680,220,30,30),"Now leave the library!",infoStyle);
+				GUI.Label(new Rect(520,220,30,30),"Now leave the library!",infoStyle);
 			}
 			else if (sceneName.Equals("Game2"))
 			{
@@ -145,15 +145,15 @@ public class PlayerHud : MonoBehaviour
 				infoStyle.normal.textColor = new Color(0,0,1,1);
 				infoStyle.font = gameSkin.font;
 				infoStyle.fontStyle = FontStyle.Bold;
-				GUI.Label(new Rect(620,120,30,30),"Chapter 2:",infoStyle);
+				GUI.Label(new Rect(480,120,30,30),"Chapter 2:",infoStyle);
 				infoStyle.fontStyle = FontStyle.BoldAndItalic;
-				GUI.Label(new Rect(870,120,30,30),"City",infoStyle);
+				GUI.Label(new Rect(730,120,30,30),"City",infoStyle);
 				infoStyle.fontSize = 30;
 				infoStyle.fontStyle = FontStyle.Normal;
-				GUI.Label(new Rect(350,180,30,30),"Now game is in the endless mode, but the speed will increase slowly with time.",infoStyle);
+				GUI.Label(new Rect(240,180,30,30),"In this section you can get some game props and the speed is faster.",infoStyle);
 				infoStyle.fontSize = 35;
 				infoStyle.fontStyle = FontStyle.Italic;
-				GUI.Label(new Rect(630,220,30,30),"Enjoy yourself in the nature!",infoStyle);
+				GUI.Label(new Rect(540,220,30,30),"Now leave the city!",infoStyle);
 			}
 			else
 			{
@@ -161,15 +161,15 @@ public class PlayerHud : MonoBehaviour
 				infoStyle.normal.textColor = new Color(0,0,0,1);
 				infoStyle.font = gameSkin.font;
 				infoStyle.fontStyle = FontStyle.Bold;
-				GUI.Label(new Rect(590,120,30,30),"Chapter 3:",infoStyle);
+				GUI.Label(new Rect(460,120,30,30),"Chapter 3:",infoStyle);
 				infoStyle.fontStyle = FontStyle.BoldAndItalic;
-				GUI.Label(new Rect(860,120,30,30),"Nature",infoStyle);
+				GUI.Label(new Rect(700,120,30,30),"Nature",infoStyle);
 				infoStyle.fontSize = 30;
 				infoStyle.fontStyle = FontStyle.Normal;
-				GUI.Label(new Rect(350,180,30,30),"Now game is in the endless mode, but the speed will increase slowly with time.",infoStyle);
+				GUI.Label(new Rect(223,180,30,30),"Now game is in the endless mode, but the speed will increase slowly with time.",infoStyle);
 				infoStyle.fontSize = 35;
 				infoStyle.fontStyle = FontStyle.Italic;
-				GUI.Label(new Rect(630,220,30,30),"Enjoy yourself in the nature!",infoStyle);
+				GUI.Label(new Rect(490,220,30,30),"Enjoy yourself in the nature!",infoStyle);
 			}
 		}
 	}

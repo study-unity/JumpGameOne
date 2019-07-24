@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 
     Transform childShield;
     public GameObject score;
+    private AudioSource hitAudio;
     /*
      * Apply initial health and also store the Rigidbody2D reference for
      * future because GetComponent<T> is relatively expensive.
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour {
     private void Start () {
         health = 6;
         rigidbody2d = GetComponent<Rigidbody2D> ();
+        hitAudio = GetComponent<AudioSource> ();
         protectCount = 0;
         protect = false;
         childShield = transform.GetChild (1);
@@ -185,5 +187,10 @@ public class PlayerController : MonoBehaviour {
      */
     public int GetClockNum() {
         return clockCount;
+    }
+
+    public void Hit()
+    {
+        hitAudio.Play();
     }
 }

@@ -14,14 +14,14 @@ public class EndShow:MonoBehaviour{
     void OnGUI()
     {
         GUIStyle infoStyle = new GUIStyle();
-        infoStyle.normal.textColor = new Color(0,0,1,1);
-        infoStyle.fontSize = 100;
+        infoStyle.normal.textColor = new Color(1, 0.92f, 0.016f, 1);
+        infoStyle.fontSize = 120;
         infoStyle.font = gameSkin.font;
-        infoStyle.fontStyle = FontStyle.Bold;
-        GUI.Label(new Rect(180,370,100,100),"Your score: ",infoStyle);
+        infoStyle.fontStyle = FontStyle.Italic;
+        GUI.Label(new Rect(150,100,100,100),"Your score: ",infoStyle);
         // 画分数
 		string playerScore = score.GetComponent<ScoreController>().Score.ToString();
 		for(int i = playerScore.Length-1; i>=0 ;i--)
-			GUI.DrawTexture(new Rect(1300-100*(playerScore.Length-i-1),370,100,100),numbers[int.Parse(playerScore[i].ToString())]);
+			GUI.DrawTexture(new Rect(1000-100*(playerScore.Length-i-1),115,100,100),numbers[int.Parse(playerScore[i].ToString())]);
     }
 }
