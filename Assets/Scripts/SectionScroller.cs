@@ -85,7 +85,7 @@ public class SectionScroller : MonoBehaviour {
         if(probable==0){
             int i = Random.Range(0,3);
             int p=Random.Range(0,end-start);
-            Vector3 position = transform.position + new Vector3 (start+p-100, 1.2f, 0);
+            Vector3 position = transform.position + new Vector3 (start+p-100, 1.4f, 0);
             GameObject obj = GameObject.Instantiate (stuts[i], position, new Quaternion (0, 0, 0, 0));
             obj.transform.parent = transform;
         }

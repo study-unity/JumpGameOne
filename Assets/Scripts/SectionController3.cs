@@ -97,7 +97,7 @@ public class SectionController3 : MonoBehaviour {
         int j = Random.Range (0, 3);
         switch (j) {
             case 0:
-                height = 1.2f;
+                height = 1.4f;
                 break;
             case 1:
                 height = 4f;
@@ -106,7 +106,7 @@ public class SectionController3 : MonoBehaviour {
                 height = 5.5f;
                 break;
             default:
-                height = 1.2f;
+                height = 1.4f;
                 break;
         }
         Vector3 position = p + new Vector3 (0, height, 0);
