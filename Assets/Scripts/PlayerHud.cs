@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-/*
- * On screen HUD to display current health.
- */
+
+// On screen HUD to display real-time messages.
 public class PlayerHud : MonoBehaviour
 {
 	private PlayerController playerController;
@@ -13,20 +12,22 @@ public class PlayerHud : MonoBehaviour
 	private Texture2D shield;
 	private Texture2D[] numbers = new Texture2D[10];
 	private Move move;
+
+	// Duration after one scene was loaded.
 	private float keepTime;
+
+	// GUI skin for change the GUI style.
 	public GUISkin gameSkin;
 
     public int Score { get => score; set => score = value; }
 
-    /*
-* Load and store the heart images and cache the PlayerController
-* component for later.
-*/
+	// Load images and cache the PlayerController and the Move component for later.
     private void Start()
 	{
 		keepTime = 0.0f;
 		playerController = GetComponent<PlayerController>();
 		move = transform.parent.gameObject.GetComponent<Move>();
+
 		heart = Resources.Load<Texture2D>("heart");
 		halfHeart = Resources.Load<Texture2D>("halfHeart");
 		time = Resources.Load<Texture2D>("time");
@@ -39,13 +40,10 @@ public class PlayerHud : MonoBehaviour
 	{
 		keepTime += Time.deltaTime;
 	}
-	/*
-	* Using the current health from the PlayerController, display the
-	* correct number of hearts and half hearts.
-	*/
+
 	private void OnGUI()
 	{
-		// 画生命
+		// Draw HP images.
 		switch(playerController.GetHealth())
 		{
 			case 1:
@@ -74,13 +72,17 @@ public class PlayerHud : MonoBehaviour
 				break;
 		}
 
-		// 画分数
+		// Calculate player's score.
 		string score = ((int)(keepTime*move.GetSpeed()/30)).ToString();
+
+		// Store the score.
 		Score = int.Parse(score);
+
+		// Draw the score.
 		for(int i = score.Length-1; i>=0 ;i--)
 			GUI.DrawTexture(new Rect(1190-80*(score.Length-i-1),10,80,80),numbers[int.Parse(score[i].ToString())]);
 
-		// 画盾牌
+		// Draw shields.
 		switch(playerController.GetShieldNum())
 		{
 			case 1:
@@ -99,7 +101,7 @@ public class PlayerHud : MonoBehaviour
 				break;
 		}
 
-		// 画减速
+		// Draw decelerators.
 		switch(playerController.GetClockNum())
 		{
 			case 1:
@@ -118,13 +120,14 @@ public class PlayerHud : MonoBehaviour
 				break;
 		}
 
-		// 画欢迎信息
+		// Draw welcome messages.
 		if(keepTime<8)
 		{
 			GUIStyle infoStyle = new GUIStyle();
 			string sceneName = SceneManager.GetActiveScene().name;
 			if(sceneName.Equals("Game"))
 			{
+				// Chapter 1
 				infoStyle.fontSize = 50;
 				infoStyle.normal.textColor = new Color(0,1,1,1);
 				infoStyle.font = gameSkin.font;
@@ -141,6 +144,7 @@ public class PlayerHud : MonoBehaviour
 			}
 			else if (sceneName.Equals("Game2"))
 			{
+				// Chapter 2
 				infoStyle.fontSize = 50;
 				infoStyle.normal.textColor = new Color(0,0,1,1);
 				infoStyle.font = gameSkin.font;
@@ -157,6 +161,7 @@ public class PlayerHud : MonoBehaviour
 			}
 			else
 			{
+				// Chapter 3
 				infoStyle.fontSize = 50;
 				infoStyle.normal.textColor = new Color(0,0,0,1);
 				infoStyle.font = gameSkin.font;

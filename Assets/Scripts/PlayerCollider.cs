@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 
-/*
- * Provide the obstacles with a way of damaging the player.
- */
+// Provide the obstacles with a way of damaging the player.
 public class PlayerCollider : MonoBehaviour
 {
 	/*
@@ -12,14 +10,16 @@ public class PlayerCollider : MonoBehaviour
 	*/
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		// Obtain a reference to the Player's PlayerController
-		PlayerController playerController =
-		other.gameObject.GetComponent<PlayerController>();
+		// Obtain a reference to the Player's PlayerController.
+		PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
 
-		// Register damage with player
+		// Register damage with player.
 		playerController.Damage();
+		
+		// Let hit audio play.
 		playerController.Hit();
-		// Make this object disappear
+
+		// Make this object disappear.
 		GameObject.Destroy(gameObject);
 	}
 }

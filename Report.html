@@ -170,11 +170,19 @@
 <td>Transmit score value between game scene and end scene.</td>
 <td>We create an object in prefab and write a C# script for it. In C# script, we call DontDestroyOnLoad() function in Start() function and declare a private int value to remember score. When we change scene from game to end, we generate this object at first, then we can get this object with player score in the end scene.</td>
 </tr>
+<tr>
+<td>We use Time.time*speed to calculate the length player has passed in one scene at first, but we found that Time.time is not seted to 0 after scene change.</td>
+<td>We count time value which player has passed in one scene by increase a Time.deltaTime once a Update() function is called.</td>
+</tr>
+<tr>
+<td>When a player use a shield, the animation of player should have a change to show that he is protected.</td>
+<td>We set an child object for the player object and bind a shield image to this child object. At first we call the SetActive(false) fuction of the child object to hide the shield image. If the player use a shield, we call SetActive(true) fuction to show the shield image. This method works well.</td>
+</tr>
 </tbody>
 </table>
 <hr>
 <h2 id="contributions">Contributions</h2>
-<p>We discussed and made this game together. After our discussion, the detailed contributions are showed here:</p>
+<p>We discussed all difficulties and made this game together. After our discussion, the detailed contributions are showed here:</p>
 <table>
 <thead>
 <tr>
@@ -196,6 +204,7 @@
 </tr>
 </tbody>
 </table>
+<hr>
 
     </body>
     </html>

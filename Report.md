@@ -96,13 +96,18 @@ We generate obstacles and game props randomly. This measure give this game more 
 |In this game, we often change the speed of player, main camera and background. This is troublesome.|We move player, main camera and background into one game object and let the new game object move by the corresponding speed. This measure let the change of speed easier.|
 |Use of game props|We set some flag variables to judge the state of the player.|
 |Transmit score value between game scene and end scene.|We create an object in prefab and write a C# script for it. In C# script, we call DontDestroyOnLoad() function in Start() function and declare a private int value to remember score. When we change scene from game to end, we generate this object at first, then we can get this object with player score in the end scene.|
+|We use Time.time*speed to calculate the length player has passed in one scene at first, but we found that Time.time is not seted to 0 after scene change.|We count time value which player has passed in one scene by increase a Time.deltaTime once a Update() function is called.|
+|When a player use a shield, the animation of player should have a change to show that he is protected.|We set an child object for the player object and bind a shield image to this child object. At first we call the SetActive(false) fuction of the child object to hide the shield image. If the player use a shield, we call SetActive(true) fuction to show the shield image. This method works well.|
 
 ---
 
 ## Contributions
 
-We discussed and made this game together. After our discussion, the detailed contributions are showed here:
+We discussed all difficulties and made this game together. After our discussion, the detailed contributions are showed here:
+
 |Name|Percent|Contributions|
 |-|-|-|
 |肖松|45%|Game design. Generate game props, ground blocks and obstacles randomly. Key control of operations. Game props' effects.|
 |咸博文|55%|Game design. GUI adjustment. Score system. Scene change. Music and image selection. Story author. Report and comments writting. Game parameters adjustment.|
+
+---

@@ -1,19 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+// Control the motivation of the player, main camera and background image.
 public class Move : MonoBehaviour {
-    // Start is called before the first frame update
+
     public int level;
     private float speed;
     public float GetSpeed () => speed;
+
+    // Whether or not a decelerator is used.
     private bool slowDown;
     private float slowTime;
+
+    // Remember origin speed.
     private float realSpeed;
 
     void Start () {
         slowDown = false;
-        //设置初始速度
+        
+        // Initialize the speed.
         switch (level) {
             case 1:
                 speed = 10;
@@ -30,27 +34,34 @@ public class Move : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update () {
-        //如果不在在减速过程中，则在第三关中，speed未到达25时以每秒0.1的速度加速
-        if (!slowDown) {
-            if (level == 3 && speed < 25) {
+    void Update ()
+    {
+        if (!slowDown)
+        {
+            // Increase the speed in chapter 3.
+            if (level == 3 && speed < 25)
                 speed = speed + 0.1f * Time.deltaTime;
-            }
-        } else{
-            //减速时间过后，恢复原有速度
-            if(Time.time>=slowTime+3){
+        }
+        else
+        {
+            // Restore the origin speed after a use of decelerator.
+            if(Time.time>=slowTime+3)
+            {
                 slowDown=false;
                 speed=realSpeed;
             }
         }
+
+        // Move game objects.
         transform.Translate (new Vector2 (speed, 0) * Time.deltaTime);
     }
 
 
-    //进行减速，若不在减速状态中则进入减速状态并将速度设为原本的1/1.5，更新减速开始时间
-    public void SlowDown () {
-        if(!slowDown){
+    // Decrease the speed.
+    public void SlowDown()
+    {
+        if(!slowDown)
+        {
             slowDown = true;
             realSpeed=speed;
             speed = speed / 1.5f;
